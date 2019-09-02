@@ -17,11 +17,11 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    number: {
+    lastname: {
         type: String,
         required: true
     },
-    myDate: {
+    username: {
         type: String,
         required: true
     }
