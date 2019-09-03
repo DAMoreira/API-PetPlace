@@ -33,7 +33,7 @@ exports.registerUser = (req, res) => {
 };
 exports.loginGUser = (req, res) => {
     if (err) {
-        return res.status(400).json({ 'msg': err });
+        return res.status(400).json({ 'msg': "el error esta aca" });
     }
     return res.status(201).json(req);
 };
