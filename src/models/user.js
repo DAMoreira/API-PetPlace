@@ -13,18 +13,19 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    lastname: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
-    },
-    number: {
-        type: String,
-        required: true
-    },
-    myDate: {
-        type: String,
-        required: true
     }
+    
 });
 
 UserSchema.pre('save', function (next) {
