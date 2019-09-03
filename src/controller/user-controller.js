@@ -32,6 +32,12 @@ exports.registerUser = (req, res) => {
     });
 };
 exports.loginGUser = (req, res) => {
+    if (err) {
+        return res.status(400).json({ 'msg': err });
+    }
+    return res.status(201).json(req);
+};
+/*exports.loginGUser = (req, res) => {
     User.findOne({ google_Id: req.body.userId}, (err, user) => {
         if (err) {
             return res.status(400).json({ 'msg': err });
@@ -62,7 +68,7 @@ exports.loginGUser = (req, res) => {
         }
   
     })
-};
+};*/
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
         return res.status(400).send({ 'msg': 'You need to send email and password' });
