@@ -7,13 +7,7 @@ var port        = process.env.PORT || 5000;
 var cors        = require('cors');
  
 var app = express();
-<<<<<<< HEAD
 app.use(cors());
-=======
-app.use(cors({
-	origin: '*'
-}));
->>>>>>> parent of d3933a8... localhost cors
 
 
 //Este metodo en teroia permite la comunicación HTTP a HTTPS pero no funciona
