@@ -35,7 +35,7 @@ exports.registerUser = (req, res) => {
 exports.loginGUser = (req, res) => {
     User.findOne({ google_Id: req.body.userId}, (err, user) => {
         if (err) {
-            return res.status(400).json({ 'msg': err });
+            return res.status(400).json({ 'msg': 'acá esta el error' });
         }
  
         if (user == null) {
