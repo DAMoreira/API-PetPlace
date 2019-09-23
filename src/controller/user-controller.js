@@ -44,19 +44,19 @@ exports.loginGUser = (req, res) => {
             });
         }
  
-        let user = new user({
+        let users = new user({
             name: req.body.givenName,
             lastname: req.body.familyName,
             email: req.body.email,
             usermane: req.body.email,
             google_Id: req.body.userId,
         })
-        user.save((err, user) => {
+        users.save((err, usernew) => {
             if (err) {
                 return res.status(400).json({ 'msg': err });
             }
             return res.status(200).json({
-                token: createToken(user),
+                token: createToken(usernew),
             });
         });
 });
