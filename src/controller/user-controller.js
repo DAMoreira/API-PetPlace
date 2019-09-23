@@ -50,10 +50,7 @@ exports.loginGUser = (req, res) => {
                 if(err){
                     return res.status(400).json({ 'msg': err });
                 }
-                return res.status(200).json({
-                    token: createToken(user)
-                });
-                
+                return res.status(201).json(user);
             })
         }
         else{
