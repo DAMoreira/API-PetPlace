@@ -11,7 +11,7 @@ var UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: false
     },
     name: {
         type: String,
@@ -24,6 +24,10 @@ var UserSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true
+    },
+    google_Id: {
+        type: String,
+        required: false
     }
 });
 
