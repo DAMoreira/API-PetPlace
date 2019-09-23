@@ -37,35 +37,30 @@ exports.loginGUser = (req, res) => {
         if (err) {
             return res.status(400).json({ 'msg': err });
         }
- 
-        if (user == null) {
-            let user = new user({
-                name: req.body.givenName,
-                lastname: req.body.familyName,
-                email: req.body.email,
-                usermane: req.body.email,
-                google_Id: req.body.userId,
-            })
-            user.save((err, user)=>{
-                if(err){
-                    return res.status(400).json({ 'msg': err });
-                }
-                return res.status(200).json({
-                    token: createToken(user),
-                    user,
-                    ok:true
-                });
-                
-            })
-        }
-        else{
+
+        if (user) {
             return res.status(200).json({
                 token: createToken(user)
             });
         }
-  
-    })
-};
+ 
+        let user = new user({
+            name: req.body.givenName,
+            lastname: req.body.familyName,
+            email: req.body.email,
+            usermane: req.body.email,
+            google_Id: req.body.userId,
+        })
+        user.save((err, user) => {
+            if (err) {
+                return res.status(400).json({ 'msg': err });
+            }
+            return res.status(200).json({
+                token: createToken(user),
+            });
+        });
+});
+            
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
         return res.status(400).send({ 'msg': 'You need to send email and password' });
