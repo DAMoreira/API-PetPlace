@@ -44,7 +44,7 @@ exports.loginGUser = (req, res) => {
                 lastname: req.body.familyName,
                 email: req.body.email,
                 usermane: req.body.email,
-                google_Id: userId
+                google_Id: req.body.userId
             })
             user.save((err, user)=>{
                 if(err){
