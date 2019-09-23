@@ -35,7 +35,7 @@ exports.registerUser = (req, res) => {
 exports.loginGUser = (req, res) => {
     User.findOne({ google_Id: req.body.userId}, (err, user) => {
         if (err) {
-            return res.status(400).json({ 'msg': 'acá esta el error' });
+            return res.status(400).json({ 'msg': err });
         }
  
         if (user == null) {
@@ -44,13 +44,18 @@ exports.loginGUser = (req, res) => {
                 lastname: req.body.familyName,
                 email: req.body.email,
                 usermane: req.body.email,
-                google_Id: req.body.userId
+                google_Id: req.body.userId,
             })
             user.save((err, user)=>{
                 if(err){
                     return res.status(400).json({ 'msg': err });
                 }
-                return res.status(201).json(user);
+                return res.status(200).json({
+                    token: createToken(user),
+                    user,
+                    ok:true
+                });
+                
             })
         }
         else{
