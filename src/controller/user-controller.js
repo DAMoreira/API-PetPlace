@@ -43,7 +43,7 @@ exports.loginGUser = (req, res) => {
             })
             usern.save((err, users)=>{
                 if(err){
-                    return res.status(400).json({ 'msg': err });
+                    return res.status(400).json({ 'msg': 'esta aca???' });
                 }
                 return res.status(200).json({
                     token: createToken(users)
