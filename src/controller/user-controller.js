@@ -40,7 +40,7 @@ exports.loginGUser = (req, res) => {
                 email: req.body.email,
                 usermane: req.body.email,
                 google_Id: req.body.userId
-            })
+            });
             usern.save((err, users)=>{
                 if(err){
                     return res.status(400).json({ 'msg': 'esta aca???' });
