@@ -39,31 +39,23 @@ exports.loginGUser = (req, res) => {
 
     }
     if(usuario = null){
-        let usern = new User({
-            name: req.body.givenName,
-            lastname: req.body.familyName,
-            email: req.body.email,
-            usermane: req.body.email,
-            google_Id: req.body.userId
-        });
+        let usern = User(req.body);
         usern.save((err, users)=>{
             if(err){
                 return res.status(400).json({ 'msg': 'esta aca???' });
             }
-            return res.status(200).json({
-                token: createToken(users)
-            });
+            return res.status(200).json(users);
             
-        })
+        });
         
     }
     return res.status(200).json({
         token: createToken(user)
     });
 
-   })
+   });
             
-        }
+        };
        
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
