@@ -33,23 +33,36 @@ exports.registerUser = (req, res) => {
 };
 
 exports.loginGUser = (req, res) => {
-   
-            let usern = new user({
-                name: "req.body.givenName",
-                lastname: "req.body.familyName",
-                email: "req.body.email",
-                usermane: "req.body.email",
-                google_Id: "req.body.userId"
+   User.findOne({google_Id : req.body.userId}, (err, usuario)=>{
+
+    if(err){
+
+    }
+    if(usuario = null){
+        let usern = new User({
+            name: req.body.givenName,
+            lastname: req.body.familyName,
+            email: req.body.email,
+            usermane: req.body.email,
+            google_Id: req.body.userId
+        });
+        usern.save((err, users)=>{
+            if(err){
+                return res.status(400).json({ 'msg': 'esta aca???' });
+            }
+            return res.status(200).json({
+                token: createToken(users)
             });
-            usern.save((err, users)=>{
-                if(err){
-                    return res.status(400).json({ 'msg': 'esta aca???' });
-                }
-                return res.status(200).json({
-                    token: createToken(users)
-                });
-                
-            })
+            
+        })
+        
+    }
+    return res.status(200).json({
+        token: createToken(user)
+    });
+
+   })
+            
         }
        
 exports.loginUser = (req, res) => {
