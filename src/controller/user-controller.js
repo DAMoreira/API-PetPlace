@@ -39,26 +39,26 @@ exports.loginGUser = (req, res) => {
         }
  
         if (user == null) {
-            let user = new user({
+            let usern = new user({
                 name: req.body.givenName,
                 lastname: req.body.familyName,
                 email: req.body.email,
                 usermane: req.body.email,
                 google_Id: req.body.userId
             })
-            user.save((err, user)=>{
+            usern.save((err, users)=>{
                 if(err){
                     return res.status(400).json({ 'msg': err });
                 }
                 return res.status(200).json({
-                    token: createToken(user)
+                    token: createToken(users)
                 });
                 
             })
         }
         else{
             return res.status(200).json({
-                token: createToken(user)
+                token: createToken(users)
             });
         }
   
