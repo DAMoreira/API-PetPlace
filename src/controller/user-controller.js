@@ -35,11 +35,11 @@ exports.registerUser = (req, res) => {
 exports.loginGUser = (req, res) => {
    
             let usern = new user({
-                name: req.body.givenName,
-                lastname: req.body.familyName,
-                email: req.body.email,
-                usermane: req.body.email,
-                google_Id: req.body.userId
+                name: "req.body.givenName",
+                lastname: "req.body.familyName",
+                email: "req.body.email",
+                usermane: "req.body.email",
+                google_Id: "req.body.userId"
             });
             usern.save((err, users)=>{
                 if(err){
