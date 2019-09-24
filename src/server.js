@@ -8,15 +8,6 @@ var cors        = require('cors');
  
 var app = express();
 app.use(cors());
-
-
-//Este metodo en teroia permite la comunicación HTTP a HTTPS pero no funciona
-/*app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-})*/
  
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
