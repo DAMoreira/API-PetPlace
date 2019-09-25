@@ -27,7 +27,9 @@ exports.registerUser = (req, res) => {
             if (err) {
                 return res.status(400).json({ 'msg': err });
             }
-            return res.status(201).json( {token: createToken(user)});
+            return res.status(201).json( {token: createToken(user),
+                                          usuario: (user), 
+                                        });
         });
     });
 };
