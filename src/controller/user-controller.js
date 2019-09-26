@@ -76,7 +76,7 @@ exports.loginUser = (req, res) => {
             if (isMatch && !err) {
                 return res.status(200).json({
                     token: createToken(user),
-                    usuario: User.usermane
+                    usuario: (user)
                 });
             } else {
                 return res.status(400).json({ msg: 'The email and password don\'t match.' });
