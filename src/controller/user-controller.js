@@ -90,8 +90,7 @@ exports.loginUser = (req, res) => {
 exports.logoutUser = (req, res) => {
     
     return res.status(200).json({
-        token: null,
-        usuario: (user)
+        token: null
     });
 }
     
