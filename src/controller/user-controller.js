@@ -85,3 +85,19 @@ exports.loginUser = (req, res) => {
         
     });
 };
+
+
+exports.logoutUser = (req, res) => {
+    jwt.verify(req.token, config.jwtSecret, function(err, user) {
+        if (err) 
+        return res.status(400).send({ 'msg': err });
+         else {
+            return res.status(200).json({
+                token: null,
+                usuario: (user)
+            });
+        }
+    })
+}
+
+
