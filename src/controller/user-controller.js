@@ -40,7 +40,7 @@ exports.loginGUser = (req, res) => {
             usern.name= req.body.givenName;
             usern.lastname= req.body.familyName;
             usern.email= req.body.email;
-            usern.usermane= req.body.email;
+            usern.username= req.body.email;
             usern.google_Id= req.body.userId; 
         
         usern.save((err, user) => { 
