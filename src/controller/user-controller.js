@@ -46,8 +46,7 @@ exports.loginGUser = (req, res) => {
             lastname: req.body.familyName,
             email: req.body.email,
             usermane: req.body.email,
-            google_Id: req.body.userId,
-            password: 0
+            google_Id: req.body.userId 
         });
         usern.save((err, users)=>{
             
