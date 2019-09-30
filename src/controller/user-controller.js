@@ -36,14 +36,18 @@ exports.registerUser = (req, res) => {
 
 exports.loginGUser = (req, res) => {
   
-        let usern = new User({
+        let usern = new User({ 
             name: req.body.givenName,
             lastname: req.body.familyName,
             email: req.body.email,
             usermane: req.body.email,
             google_Id: req.body.userId 
         });
-        usern.save((err, user) => { });
+        usern.save((err, user) => { 
+            if(err){
+                return res.status(201).json(req.body.givenName);
+            }
+        });
     }       
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
