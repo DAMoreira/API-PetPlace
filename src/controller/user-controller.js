@@ -43,7 +43,7 @@ exports.loginGUser = (req, res) => {
             usermane: req.body.email,
             google_Id: req.body.userId 
         });
-        usern.save((err, users))
+        usern.save();
     }       
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
