@@ -36,6 +36,9 @@ exports.registerUser = (req, res) => {
 
 exports.loginGUser = (req, res) => {
    User.findOne({google_Id : req.body.userId}, (err, user)=>{
+    if(err){
+        return res.status(400).send({ 'msg': err });   
+    }
     if(user == null){
         let usern = new User; 
             usern.name= req.body.givenName;
@@ -57,9 +60,13 @@ exports.loginGUser = (req, res) => {
         });
         
     }
-   if(err){
-       return res.status(400).send({err});
-   }
+    else{
+        return res.status(200).json({
+            token: createToken(user),
+            usuario: (user)
+        });
+    }
+  
    });
             
         };
