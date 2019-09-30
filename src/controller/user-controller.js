@@ -35,20 +35,38 @@ exports.registerUser = (req, res) => {
 };
 
 exports.loginGUser = (req, res) => {
-  
+   User.findOne({google_Id : req.body.userId}, (err, user)=>{
+
+    if(err){
+        return res.status(201).json({'error': err});
+    }
+    if(user = null){
         let usern = new User; 
-            usern.name= req.body.givenName;
-            usern.lastname= req.body.familyName;
-            usern.email= req.body.email;
-            usern.username= req.body.email;
-            usern.google_Id= req.body.userId; 
+        usern.name= req.body.givenName;
+        usern.lastname= req.body.familyName;
+        usern.email= req.body.email;
+        usern.username= req.body.email;
+        usern.google_Id= req.body.userId; 
+    
+    usern.save((err, user) => { 
+        if(err){
+            return res.status(201).json({'error': err});
+        }
+        if(user){
+            return res.status(201).json( {token: createToken(user),
+                usuario: (newUser), 
+              });
+        }
+    });
         
-        usern.save((err, user) => { 
-            if(err){
-                return res.status(201).json({'error': err});
-            }
-        });
-    }       
+    }
+    return res.status(201).json( {token: createToken(user),
+        usuario: (newUser), 
+      });
+   });
+            
+        };
+       
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
         return res.status(400).send({ 'msg': 'You need to send email and password' });
