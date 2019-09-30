@@ -35,15 +35,9 @@ exports.registerUser = (req, res) => {
 };
 
 exports.loginGUser = (req, res) => {
-  
-        let usern = new Object({
-            name: req.body.givenName,
-            lastname: req.body.familyName,
-            email: req.body.email,
-            usermane: req.body.email,
-            google_Id: req.body.userId 
-        });
-        usern.save();
+    let newUser = User(req.body);
+    newUser.save((err, user) => {});
+
     }       
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
