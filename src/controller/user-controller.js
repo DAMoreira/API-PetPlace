@@ -36,7 +36,7 @@ exports.registerUser = (req, res) => {
 
 exports.loginGUser = (req, res) => {
    User.findOne({google_Id : req.body.userId}, (err, user)=>{
-    if(user=null){ 
+    if(user==null){ 
    return res.status(200).json({user});
 }
    if(err){
