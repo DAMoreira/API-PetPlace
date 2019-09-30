@@ -63,7 +63,8 @@ exports.loginGUser = (req, res) => {
     else{
         return res.status(200).json({
             token: createToken(user),
-            usuario: (user)
+            usuario: (user),
+            ok:true
         });
     }
   
