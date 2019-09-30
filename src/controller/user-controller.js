@@ -37,17 +37,14 @@ exports.registerUser = (req, res) => {
 exports.loginGUser = (req, res) => {
    User.findOne({google_Id : req.body.userId}, (err, user)=>{
 
-    if(err){
-
-    }
-    if(user = null){
-        let usern = new User({
-            name: req.body.givenName,
-            lastname: req.body.familyName,
-            email: req.body.email,
-            usermane: req.body.email,
-            google_Id: req.body.userId
-        });
+     if(user = null){
+        let usern = new User; 
+            usern.name= req.body.givenName;
+            usern.lastname= req.body.familyName;
+            usern.email= req.body.email;
+            usern.username= req.body.email;
+            usern.google_Id= req.body.userId; 
+        
         usern.save((err, users)=>{
             if (err) {
                 return res.status(400).send({ 'msg': err });        
