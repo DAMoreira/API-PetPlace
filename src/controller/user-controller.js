@@ -36,7 +36,7 @@ exports.registerUser = (req, res) => {
 
 exports.loginGUser = (req, res) => {
   
-        let usern = new User({
+        let usern = new Object({
             name: req.body.givenName,
             lastname: req.body.familyName,
             email: req.body.email,
