@@ -45,7 +45,7 @@ exports.loginGUser = (req, res) => {
         
         usern.save((err, user) => { 
             if(err){
-                return res.status(201).json(req.body.givenName);
+                return res.status(201).json({'error': err});
             }
         });
     }       
