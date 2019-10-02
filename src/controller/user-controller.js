@@ -10,7 +10,7 @@ function createToken(user) {
 function validarToken(token){
     return  jwt.verify(token, 'long-live-the-ionic-academy', (err, verifiedJwt) => {
         if(err){
-            return res.status(400).json({ 'msg': err });
+            return res.status(400).json({ 'msg': 'algo maliosal' });
         }else{
           res.json(verifiedJwt)
         }
