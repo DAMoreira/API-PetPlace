@@ -7,8 +7,8 @@ function createToken(user) {
         expiresIn: 200 // 86400 expires in 24 hours
       });
     }
-function validarToken(token){
- jwt.verify(token, 'long-live-the-ionic-academy', function(err, verifiedJwt){
+function validarToken(){
+ jwt.verify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWQ5ZDk0ZjIyMDFlMDAxNzcwNTIzNCIsImVtYWlsIjoianVsaWFuQHBldHBsYWNlLmNvbSIsImlhdCI6MTU3MDA1NTQ1MiwiZXhwIjoxNTcwMDU1NjUyfQ.QzW0wiDPd2z2vI7WZRHnMXrfdb0358pTUDwDL_xvAOE', 'long-live-the-ionic-academy', function(err, verifiedJwt){
         if(err){
             return res.status(400).json({ 'msg': 'algo maliosal' });
         }else{
@@ -103,7 +103,7 @@ exports.loginUser = (req, res) => {
                 return res.status(200).json({
                     token: createToken(user),
                     usuario: (user),
-                    algo: validarToken(createToken(user))
+                    algo: validarToken()
                 });
             } else {
                 return res.status(400).json({ msg: 'The email and password don\'t match.' });
