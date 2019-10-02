@@ -6,7 +6,17 @@ function createToken(user) {
     return jwt.sign({ id: user.id, email: user.email }, config.jwtSecret, {
         expiresIn: 200 // 86400 expires in 24 hours
       });
+    }
+function validarToken(token){
+    return  jwt.verify(token, 'top-secret-phrase', (err, verifiedJwt) => {
+        if(err){
+          res.send(err.message)
+        }else{
+          res.send(verifiedJwt)
+        }
+      })
 }
+
  
 exports.registerUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
@@ -92,7 +102,8 @@ exports.loginUser = (req, res) => {
             if (isMatch && !err) {
                 return res.status(200).json({
                     token: createToken(user),
-                    usuario: (user),  header: res.header
+                    usuario: (user),
+                    algo: validarToken(token)
                 });
             } else {
                 return res.status(400).json({ msg: 'The email and password don\'t match.' });
