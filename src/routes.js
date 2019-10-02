@@ -15,7 +15,7 @@ routes.post('/login/google', userController.loginGUser);
 routes.get('/logout', userController.logoutUser);
 
 //rutas mascota
-routes.post('/register', mascotaController.registerMascota);
+routes.post('/registerM', mascotaController.registerMascota);
 
 //jwt con email 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
