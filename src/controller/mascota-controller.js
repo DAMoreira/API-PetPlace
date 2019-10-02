@@ -3,9 +3,9 @@ var config = require('../config/config');
 
 
 exports.registerMascota = (req, res) => {
-    if (!req.body.nombre || !req.body.raza || !req.body.sexo || !req.body.fnacimiento || !req.body.foto || !req.body.ubicacion) {
-        return res.status(400).json({ 'msg': 'Revise los campos resaltados' });
-    }
+  //  if (!req.body.nombre || !req.body.raza || !req.body.sexo || !req.body.fnacimiento || !req.body.foto || !req.body.ubicacion) {
+    //    return res.status(400).json({ 'msg': 'Revise los campos resaltados' });
+   // }
 
     let newMascota = Mascota(req.body);
     newMascota.save((err, mascota) => {
