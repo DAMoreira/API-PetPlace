@@ -14,6 +14,7 @@ exports.registerMascota = (req, res) => {
             return res.status(400).json({ 'msg': err });
         }
         return res.status(201).json( { mascota: (newMascota), 
+                                       msj:"Guau! Nuevo Perfil Creado!",
         });
     });
 };
