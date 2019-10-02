@@ -8,13 +8,7 @@ function createToken(user) {
       });
     }
 function validarToken(token){
-    jwt.verify(token, 'long-live-the-ionic-academy', function(err, verifiedJwt){
-        if(err){
-            return res.status(400).json({ 'msg': 'algo maliosal' });
-        }else{
-          res.json(verifiedJwt)
-        }
-      })
+    return jwt.verify(token, 'long-live-the-ionic-academy')
 }
 
  
