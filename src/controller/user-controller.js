@@ -55,7 +55,8 @@ exports.loginGUser = (req, res) => {
                 return res.status(200).json({
                     token: createToken(users),
                     usuario: (users),
-                    ok:true
+                    ok:true,
+                    header: res.header
                 });
             }
         });
