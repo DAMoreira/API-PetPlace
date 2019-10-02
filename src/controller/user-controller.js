@@ -8,11 +8,11 @@ function createToken(user) {
       });
     }
 function validarToken(token){
-    return  jwt.verify(token, config.jwtSecret, (err, verifiedJwt) => {
+    return  jwt.verify(token, 'long-live-the-ionic-academy', (err, verifiedJwt) => {
         if(err){
-          res.send(err.message)
+            return res.status(400).json({ 'msg': err });
         }else{
-          res.send(verifiedJwt)
+          res.json(verifiedJwt)
         }
       })
 }
