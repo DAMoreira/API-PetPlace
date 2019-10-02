@@ -8,7 +8,7 @@ function createToken(user) {
       });
     }
 function validarToken(token){
-    return  jwt.verify(token, 'top-secret-phrase', (err, verifiedJwt) => {
+    return  jwt.verify(token, config.jwtSecret, (err, verifiedJwt) => {
         if(err){
           res.send(err.message)
         }else{
