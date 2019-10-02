@@ -7,9 +7,7 @@ function createToken(user) {
         expiresIn: 200 // 86400 expires in 24 hours
       });
     }
-function validarToken(token){
-    return jwt.verify(token, 'long-live-the-ionic-academy')
-}
+
 
  
 exports.registerUser = (req, res) => {
@@ -97,7 +95,7 @@ exports.loginUser = (req, res) => {
                 return res.status(200).json({
                     token: createToken(user),
                     usuario: (user),
-                    algo: validarToken(token)
+                    algo: jwt.verify(token,config.jwtSecret)
                 });
             } else {
                 return res.status(400).json({ msg: 'The email and password don\'t match.' });
