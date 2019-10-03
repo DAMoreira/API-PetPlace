@@ -45,7 +45,7 @@ var MascotaSchema = new mongoose.Schema({
         required: false
     },
     amo:[{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }]
 });
