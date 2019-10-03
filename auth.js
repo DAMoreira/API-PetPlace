@@ -1,7 +1,7 @@
 //este archivo en teoria me debería permitir controlar los tokens 
 
-'use strict'
-const jwt = require('jwt')
+
+const jwt = require('jwt-simple')
 const moment = require('moment')
 const config = require('./config/config')
 
