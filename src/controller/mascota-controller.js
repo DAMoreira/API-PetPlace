@@ -14,7 +14,7 @@ exports.registerMascota = (req, res) => {
     if (!req.body.nombre || !req.body.raza || !req.body.sexo || !req.body.foto || !req.body.ubicacion || !req.body.token ) {
         return res.status(400).json({ 'msg': 'Revise los campos resaltados' });
     }
-
+//creo la nueva mascota y le asigno el objetId del dueño mediente el token
     let newMascota = Mascota(req.body);
     newMascota.amo = validarTk(req.body.token).id
     newMascota.save((err, mascota) => {
@@ -28,6 +28,7 @@ exports.registerMascota = (req, res) => {
         });
     });
 };
+//metodo para mostrar las mascotas, recibe un token y devuelve las mascotas que coinciten el amo con el objectId del token (que sería la referencia del objeto usuario)
 exports.misMascotas = (req, res) =>{
     Mascota.find({ amo: validarTk(req.body.token).id}, (err, mascota)=>{
         if(err){
