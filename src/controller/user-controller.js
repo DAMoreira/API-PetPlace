@@ -7,9 +7,10 @@ function createToken(user) {
         expiresIn: 200 // 86400 expires in 24 hours
       });
     }
-function validarTk(token){
-    payload = jwt.verify(token, config.jwtSecret);
-    return payload 
+function validarTk(req, res){
+    payload = jwt.verify(req.body.token, config.jwtSecret);
+        return res.status(201).json( {info: payload 
+          }); 
       
 }
 
