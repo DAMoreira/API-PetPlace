@@ -15,7 +15,7 @@ exports.registerMascota = (req, res) => {
         return res.status(400).json({ 'msg': 'Revise los campos resaltados' });
     }
 
-    let newMascota = Mascota(req.body);
+    let newMascota = Mascota(req.body, newMascota.amo = validarTk(req.body.token).body.id);
     newMascota.save((err, mascota) => {
         if (err) {
             return res.status(400).json({ 'msg': err });
