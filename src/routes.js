@@ -18,7 +18,7 @@ routes.post('/control',userController.controlUser);
 
 //rutas mascota
 routes.post('/registerM', mascotaController.registerMascota);
-routes.post('/misMascotas',auth.isAuth , mascotaController.misMascotas);
+routes.post('/misMascotas' mascotaController.misMascotas);
 
 //jwt con email 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
