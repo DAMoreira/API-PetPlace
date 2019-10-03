@@ -2,7 +2,7 @@ var Mascota = require('../models/mascota.model');
 var config = require('../config/config');
 var jwt = require('jsonwebtoken');
 
-//funcion para valdiar token, si esta activo devulve el emial sino error.
+//funcion para valdiar token, si esta activo devulve el emial y id del objeto usuario, sino error.
 function validarTk(token){
     return jwt.verify(token, config.jwtSecret);
            
@@ -28,3 +28,13 @@ exports.registerMascota = (req, res) => {
         });
     });
 };
+exports.misMascotas = (req, res) =>{
+    Mascota.find({ amo: req.id}, (err, mascota)=>{
+        if(err){
+            return res.status(400).send({ 'msg': err });
+        }
+        return res.status(200).json({
+           mascota
+        });   
+}
+    )};
