@@ -44,10 +44,10 @@ var MascotaSchema = new mongoose.Schema({
         type: Boolean,
         required: false
     },
-    amo:[{
+    amo:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }]
+    }
 });
 
 //quizas acá se podria agregar una funcion que agregue el ID object de mongoDB del usuario a la mascota 
