@@ -8,7 +8,7 @@ function createToken(user) {
       });
     }
 function validarTk(token){
-    payload = jwt.verify(body.token, config.jwtSecret);
+    payload = jwt.verify(token, config.jwtSecret);
     return payload 
       
 }
