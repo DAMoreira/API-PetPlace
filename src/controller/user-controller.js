@@ -7,6 +7,11 @@ function createToken(user) {
         expiresIn: 200 // 86400 expires in 24 hours
       });
     }
+function validarTk(token){
+    payload = jwt.verify(body.token, config.jwtSecret);
+    return res.status(201).json( {info: payload 
+      });
+}
 
 
  
@@ -94,7 +99,8 @@ exports.loginUser = (req, res) => {
             if (isMatch && !err) {
                 return res.status(200).json({
                     token: createToken(user),
-                    usuario: (user)
+                    usuario: (user),
+                    valido: validarTk(this.token)
                 });
             } else {
                 return res.status(400).json({ msg: 'The email and password don\'t match.' });
