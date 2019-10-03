@@ -9,8 +9,8 @@ function createToken(user) {
     }
 function validarTk(token){
     payload = jwt.verify(body.token, config.jwtSecret);
-    return res.status(201).json( {info: payload 
-      });
+    return payload 
+      
 }
 
 
