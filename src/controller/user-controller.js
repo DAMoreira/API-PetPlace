@@ -113,7 +113,7 @@ exports.logoutUser = (req, res) => {
 }
 exports.controlUser = (req, res) => {
     
-        payload = jwt.verify(req,config.jwtSecret);
+        payload = jwt.verify(req.body.token, config.jwtSecret);
         return res.status(201).json( {info: payload 
           });
 }
