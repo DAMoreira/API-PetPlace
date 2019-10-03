@@ -10,7 +10,7 @@ exports.ensureAuthenticated = function(req, res, next) {
   }
   
   var token = req.headers.authorization.split(" ")[1];
-  var payload = jwt.decode(token, config.jwtSecret;
+  var payload = jwt.decode(token, config.jwtSecret);
   
   if(false) {
      return res
