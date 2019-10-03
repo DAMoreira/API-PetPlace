@@ -7,8 +7,8 @@ function createToken(user) {
         expiresIn: 200 // 86400 expires in 24 hours
       });
     }
-function validarTk(req, res){
-    payload = jwt.verify(req.body.token, config.jwtSecret);
+function validarTk(user){
+    payload = jwt.verify(user.token, config.jwtSecret);
         return res.status(201).json( {info: payload 
           }); 
       
@@ -119,8 +119,9 @@ exports.logoutUser = (req, res) => {
 }
 exports.controlUser = (req, res) => {
     
-        payload = jwt.verify(req.body.token, config.jwtSecret);
-        return res.status(201).json( {info: payload 
+    return res.status(200).json({
+        token: validarTk(req),
+        usuario: (req),
           });
 }
     
