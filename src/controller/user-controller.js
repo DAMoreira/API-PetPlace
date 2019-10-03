@@ -7,8 +7,8 @@ function createToken(user) {
         expiresIn: 200 // 86400 expires in 24 hours
       });
     }
-function validarTk(user){
-    return jwt.verify(user.body.token, config.jwtSecret);
+function validarTk(token){
+    return jwt.verify(token, config.jwtSecret);
        
       
 }
@@ -119,7 +119,7 @@ exports.logoutUser = (req, res) => {
 exports.controlUser = (req, res) => {
     
     return res.status(200).json({
-        token: validarTk(req)
+        token: validarTk(req.body.token)
           });
 }
     
