@@ -50,6 +50,6 @@ var MascotaSchema = new mongoose.Schema({
     }
 });
 
-//quizas acá se podria agregar una funcion que agregue el ID object de mongoDB del usuario a la mascota 
+
 
 module.exports = mongoose.model('Mascota', MascotaSchema);
