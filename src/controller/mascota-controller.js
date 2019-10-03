@@ -16,7 +16,7 @@ exports.registerMascota = (req, res) => {
         }
         return res.status(201).json( { mascota: (newMascota), 
                                        msj:"Guau! Nuevo Perfil Creado!",
-                                       msj2: userc.controlUser(token)
+                                       msj2: userc.controlUser(req.body.token)
                                  
         });
     });
