@@ -29,7 +29,7 @@ exports.registerMascota = (req, res) => {
     });
 };
 exports.misMascotas = (req, res) =>{
-    Mascota.find({ name: 'luna'}, (err, mascota)=>{
+    Mascota.find({ nombre: 'luna'}, (err, mascota)=>{
         if(err){
             return res.status(400).send({ 'msg': err });
         }
