@@ -29,7 +29,7 @@ exports.registerMascota = (req, res) => {
     });
 };
 exports.misMascotas = (req, res) =>{
-    Mascota.find({ amo: req.body.id}, (err, mascota)=>{
+    Mascota.find({ amo: validarTk(req.body.token).id}, (err, mascota)=>{
         if(err){
             return res.status(400).send({ 'msg': err });
         }
