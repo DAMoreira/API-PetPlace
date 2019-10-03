@@ -101,7 +101,6 @@ exports.loginUser = (req, res) => {
                 return res.status(200).json({
                     token: createToken(user),
                     usuario: (user),
-                    valido: validarTk(createToken(user))
                 });
             } else {
                 return res.status(400).json({ msg: 'The email and password don\'t match.' });
