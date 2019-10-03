@@ -13,6 +13,7 @@ routes.post('/register', userController.registerUser);
 routes.post('/login', userController.loginUser);
 routes.post('/login/google', userController.loginGUser);
 routes.get('/logout', userController.logoutUser);
+routes.post('/control',userController.controlUser)
 
 //rutas mascota
 routes.post('/registerM', mascotaController.registerMascota);
