@@ -3,7 +3,7 @@ var express         = require('express'),
 var userController  = require('./controller/user-controller');
 var mascotaController = require('./controller/mascota-controller');
 var passport	    = require('passport');
-
+const auth = require('../middleware/auth')
  
 routes.get('/', (req, res) => {
     return res.send('Hello, this is the API!');
@@ -18,7 +18,7 @@ routes.post('/control',userController.controlUser);
 
 //rutas mascota
 routes.post('/registerM', mascotaController.registerMascota);
-routes.post('/misMascotas' , mascotaController.misMascotas);
+routes.post('/misMascotas',auth.isAuth , mascotaController.misMascotas);
 
 //jwt con email 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
