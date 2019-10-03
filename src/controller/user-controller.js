@@ -8,9 +8,8 @@ function createToken(user) {
       });
     }
 function validarTk(user){
-    payload = jwt.verify(user.body.token, config.jwtSecret);
-        return res.status(201).json( {info: payload 
-          }); 
+    return jwt.verify(user.body.token, config.jwtSecret);
+       
       
 }
 
