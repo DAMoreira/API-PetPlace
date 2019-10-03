@@ -1,6 +1,12 @@
 var Mascota = require('../models/mascota.model');
 var config = require('../config/config');
-var userc = require('../controller/user-controller')
+var jwt = require('jsonwebtoken');
+
+
+function validarTk(token){
+    return jwt.verify(token, config.jwtSecret);
+           
+}
 
 //metodo de alta de mascota
 exports.registerMascota = (req, res) => {
@@ -16,7 +22,7 @@ exports.registerMascota = (req, res) => {
         }
         return res.status(201).json( { mascota: (newMascota), 
                                        msj:"Guau! Nuevo Perfil Creado!",
-                                       msj2: userc.controlUser(req.body.token)
+                                       msj2: validarTk(req.body.token)
                                  
         });
     });
