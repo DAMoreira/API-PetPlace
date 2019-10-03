@@ -2,11 +2,13 @@ var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var config = require('../config/config');
  
+// funcion para crear token
 function createToken(user) {
     return jwt.sign({ id: user.id, email: user.email }, config.jwtSecret, {
         expiresIn: 200 // 86400 expires in 24 hours
       });
     }
+//funcion para valdiar token, si esta activo devulve el emial sino error.
 function validarTk(token){
     return jwt.verify(token, config.jwtSecret);
        
@@ -116,6 +118,8 @@ exports.logoutUser = (req, res) => {
         token: null
     });
 }
+
+//validacion de token
 exports.controlUser = (req, res) => {
     
     return res.status(200).json({

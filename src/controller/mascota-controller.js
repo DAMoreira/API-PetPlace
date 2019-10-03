@@ -2,7 +2,7 @@ var Mascota = require('../models/mascota.model');
 var config = require('../config/config');
 var jwt = require('jsonwebtoken');
 
-
+//funcion para valdiar token, si esta activo devulve el emial sino error.
 function validarTk(token){
     return jwt.verify(token, config.jwtSecret);
            
@@ -15,7 +15,7 @@ exports.registerMascota = (req, res) => {
         return res.status(400).json({ 'msg': 'Revise los campos resaltados' });
     }
 
-    let newMascota = Mascota(req.body);
+    let newMascota = Mascota(req.body, newMascota.amo = validarTk(req.body.token).Id);
     newMascota.save((err, mascota) => {
         if (err) {
             return res.status(400).json({ 'msg': err });
