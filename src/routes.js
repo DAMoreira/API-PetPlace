@@ -3,7 +3,7 @@ var express         = require('express'),
 var userController  = require('./controller/user-controller');
 var mascotaController = require('./controller/mascota-controller');
 var passport	    = require('passport');
-const auth = require('../auth');
+const auth = require('./controller/auth');
  
 routes.get('/', (req, res) => {
     return res.send('Hello, this is the API!');
