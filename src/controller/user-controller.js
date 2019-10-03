@@ -120,8 +120,7 @@ exports.logoutUser = (req, res) => {
 exports.controlUser = (req, res) => {
     
     return res.status(200).json({
-        token: validarTk(req),
-        usuario: (req),
+        token: validarTk(req)
           });
 }
     
