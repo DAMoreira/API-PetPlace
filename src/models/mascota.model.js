@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt');
 var MascotaSchema = new mongoose.Schema({
     nombre: {
         type: String,
+        unique: true,
         required: true,
         lowercase: true,
         trim: true
