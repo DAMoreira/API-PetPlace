@@ -12,14 +12,14 @@ routes.get('/', (req, res) => {
 //rutas usuario
 routes.post('/register', userController.registerUser); //deberíamos agregar los headers en las rutas para verificar el token
 routes.post('/login', userController.loginUser);
-routes.post('/login/google', userController.loginGUser);
+routes.post('/login/google',passport.authenticate ,userController.loginGUser);
 routes.get('/logout', userController.logoutUser);
 routes.post('/control',userController.controlUser);
 
-
 //rutas mascota
-routes.post('/registerM', mascotaController.registerMascota);
+routes.post('/registerM' ,mascotaController.registerMascota);
 routes.post('/misMascotas', mascotaController.misMascotas);
+routes.post('/modificarMascota', mascotaController.modifyMascota);
 
 //jwt con email 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {

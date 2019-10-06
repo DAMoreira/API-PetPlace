@@ -39,3 +39,17 @@ exports.misMascotas = (req, res) =>{
         });   
 }
     )};
+
+    exports.modifyMascota = (req, res) => {
+        //if para controlar los datos ingresados, cuando pongo la fecha no me lo toma por eso lo saque :B 
+        if (!req.body.nombre || !req.body.raza || !req.body.sexo || !req.body.foto || !req.body.ubicacion || !req.body.token ) {
+            return res.status(400).json({ 'msg': 'Revise los campos resaltados' });
+        }
+        
+        Mascota.findOneAndUpdate(
+            {"nombre": req.body.nombre},
+            {$set: {"raza":req.body.raza}},function(err,doc){
+                if (err) { console.log("error");}
+                else { console.log(doc);}
+            }
+        );
