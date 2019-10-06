@@ -48,7 +48,7 @@ exports.misMascotas = (req, res) =>{
         
         Mascota.findOneAndUpdate(
             {"nombre": req.body.nombre},
-            {$set: {"raza":req.body.raza}},function(err,mascota){
+            {$set: {"raza":req.body.raza, "nombre":req.body.nombre}},function(err,mascota){
                 if(err){
                     return res.status(400).send({ 'msg': err });
                 }
