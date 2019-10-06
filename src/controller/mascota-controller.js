@@ -47,13 +47,12 @@ exports.misMascotas = (req, res) =>{
         }
         
         Mascota.findOneAndUpdate(
-            {"nombre": req.body.nombre},
-            {$set: {"raza":req.body.raza, "sexo":req.body.sexo}},function(err,mascota){
+            {"_id": req.body._id},
+            {$set: {"nombre": req.body.nombre, "raza":req.body.raza, "sexo":req.body.sexo,"nroPariciones":req.body.nroPariciones,"fNacimiento":req.body.fNacimiento,"foto":req.body.foto,"ubicacion":req.body.ubicacion,"pedigree":req.body.pedigree,"descripcion":req.body.descripcion}},function(err,mascota){
                 if(err){
                     return res.status(400).send({ 'msg': err });
                 }
-                return res.status(200).json({
-                   mascota  
+                return res.status(200).json({mascota,msj:"Guau! Perfil Modificado!"
                 });
             }
         );
