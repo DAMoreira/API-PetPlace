@@ -48,7 +48,11 @@ exports.misMascotas = (req, res) =>{
         
         Mascota.findOneAndUpdate(
             {"_id": req.body._id},
-            {$set: {"nombre": req.body.nombre, "raza":req.body.raza, "sexo":req.body.sexo,"nroPariciones":req.body.nroPariciones,"fNacimiento":req.body.fNacimiento,"foto":req.body.foto,"ubicacion":req.body.ubicacion,"pedigree":req.body.pedigree,"descripcion":req.body.descripcion}},function(err,mascota){
+            {$set: {"nombre": req.body.nombre, "raza":req.body.raza, "sexo":req.body.sexo,"nroPariciones":req.body.nroPariciones,
+            "fNacimiento":req.body.fNacimiento,"foto":req.body.foto,"ubicacion":req.body.ubicacion,"pedigree":req.body.pedigree,
+            "descripcion":req.body.descripcion}}
+            ,{new:true},
+            function(err,mascota){
                 if(err){
                     return res.status(400).send({ 'msg': err });
                 }
