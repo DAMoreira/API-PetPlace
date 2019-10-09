@@ -4,7 +4,7 @@ var JwtStrategy = require('passport-jwt').Strategy,
 var config      = require('../config/config');
  
 var opts = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
     secretOrKey: config.jwtSecret
 }
 
