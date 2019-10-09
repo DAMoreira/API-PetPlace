@@ -22,7 +22,7 @@ routes.post('/misMascotas', mascotaController.misMascotas);
 routes.post('/modificarMascota', mascotaController.modifyMascota);
 
 //jwt con email 
-routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
+routes.get('/special', passport.authenticate('jwt', { session: true }), (req, res) => {
     return res.json({ msg: `Hey ${req.user.email}! I open at the close.` });
 });
 
