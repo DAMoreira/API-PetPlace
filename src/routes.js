@@ -17,7 +17,8 @@ routes.get('/logout', userController.logoutUser);
 routes.post('/control',passport.authenticate('jwt', { session: false }),userController.controlUser);
 
 //rutas mascota
-routes.post('/registerM', passport.authenticate('jwt', { session: false }),mascotaController.registerMascota);
+//routes.post('/registerM', passport.authenticate('jwt', { session: false }),mascotaController.registerMascota);
+routes.post('/registerM', mascotaController.registerMascota);
 routes.post('/misMascotas', mascotaController.misMascotas);
 routes.post('/modificarMascota', mascotaController.modifyMascota);
 routes.post('/getAllMascotas', mascotaController.getAllMascotas);
