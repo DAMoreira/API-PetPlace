@@ -39,6 +39,17 @@ exports.misMascotas = (req, res) =>{
 }
     )};
 
+exports.getAllMascotas = (req, res) =>{
+    Mascota.find({}, (err, mascota)=>{
+        if(err){
+            return res.status(400).send({ 'msg': err });
+        }
+        return res.status(200).json({
+           mascota
+        });   
+}
+    )};
+
 exports.modifyMascota = (req, res) => {
         //if para controlar los datos ingresados, cuando pongo la fecha no me lo toma por eso lo saque :B 
     if (!req.body.nombre || !req.body.raza || !req.body.sexo || !req.body.foto || !req.body.ubicacion || !req.body.token ) {

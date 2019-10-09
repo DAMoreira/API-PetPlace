@@ -20,6 +20,7 @@ routes.post('/control',passport.authenticate('jwt', { session: false }),userCont
 routes.post('/registerM', passport.authenticate('jwt', { session: false }),mascotaController.registerMascota);
 routes.post('/misMascotas', mascotaController.misMascotas);
 routes.post('/modificarMascota', mascotaController.modifyMascota);
+routes.post('/getAllMascotas', mascotaController.getAllMascotas);
 
 //jwt con email 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
