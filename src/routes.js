@@ -14,7 +14,7 @@ routes.post('/register', userController.registerUser); //deberíamos agregar los
 routes.post('/login', userController.loginUser);
 routes.post('/login/google',passport.authenticate ,userController.loginGUser);
 routes.get('/logout', userController.logoutUser);
-routes.post('/control',userController.controlUser);
+routes.post('/control',passport.authenticate('jwt', { session: false }),userController.controlUser);
 
 //rutas mascota
 routes.post('/registerM' ,mascotaController.registerMascota);
