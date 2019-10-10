@@ -131,7 +131,7 @@ exports.controlUser = (req, res) => {
 
 exports.obternerTUser = (res) =>{
     return res.status(200).json({
-       'user': passport.session()
+       'user': passport.session().email
     });
 }
 
