@@ -126,6 +126,10 @@ exports.controlUser = (req, res) => {
         token: validarTk(req.body.token)
           });
 }
+
+exports.obternerTUser = (res) =>{
+    return res.user.email
+}
     
 
 
