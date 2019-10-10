@@ -3,6 +3,8 @@ var express         = require('express'),
 var userController  = require('./controller/user-controller');
 var mascotaController = require('./controller/mascota-controller');
 var passport	    = require('passport');
+var razasController = require('./controller/razas-controller');
+
 
  
 routes.get('/', (req, res) => {
@@ -22,6 +24,8 @@ routes.post('/registerM',passport.authenticate('jwt', { session: false }), masco
 routes.post('/misMascotas', mascotaController.misMascotas);
 routes.post('/modificarMascota', mascotaController.modifyMascota);
 routes.post('/getAllMascotas', mascotaController.getAllMascotas);
+routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
+
 
 //jwt con email 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
