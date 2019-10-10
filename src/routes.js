@@ -27,7 +27,7 @@ routes.post('/getAllMascotas', mascotaController.getAllMascotas);
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
     return res.json({ msg: `Hey ${req.user.email}! I open at the close.` });
 });
-routes.get('/token', passport.authenticate('jwt', { session: false }), userController.obternerTUser)
+routes.get('/token', passport.authenticate('jwt', { session: false }), userController.obternerTUser);
 
  
 module.exports = routes;

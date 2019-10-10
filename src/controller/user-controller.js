@@ -1,6 +1,7 @@
 var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var config = require('../config/config');
+var passport	    = require('passport');
  
 // funcion para crear token
 function createToken(user) {
@@ -128,7 +129,9 @@ exports.controlUser = (req, res) => {
 }
 
 exports.obternerTUser = (res) =>{
-    return res.user.email
+    return res.status(200).json({
+       'user': user.email
+    });
 }
     
 
