@@ -31,11 +31,9 @@ routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
     return res.json({ msg: `Hey ${req.user.email}! I open at the close.` });
 });
-<<<<<<< HEAD
 routes.get('/token', passport.authenticate('jwt', { session: false }), userController.obternerTUser);
-=======
 
->>>>>>> 7d18d0fb71f2f46ce9c629fa9bcff28d69176d8d
+
 
  
 module.exports = routes;
