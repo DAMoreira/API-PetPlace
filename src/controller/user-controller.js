@@ -127,12 +127,15 @@ exports.controlUser = (req, res) => {
         token: validarTk(req.body.token)
           });
 }
+<<<<<<< HEAD
 
 exports.obternerTUser = (res) =>{
     return res.status(200).json({
        'user': user.email
     });
 }
+=======
+>>>>>>> 7d18d0fb71f2f46ce9c629fa9bcff28d69176d8d
     
 
 
