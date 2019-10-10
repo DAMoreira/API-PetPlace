@@ -129,10 +129,9 @@ exports.controlUser = (req, res) => {
 }
 
 
-exports.obternerTUser = (res) =>{
-    return res.status(200).json({
-       'user': passport.session().email
-    });
+exports.obternerTUser = (req, res) =>{
+ 
+        return res.json({ msg: `Hey ${req.user.email}! I open at the close.` });
 }
 
     
