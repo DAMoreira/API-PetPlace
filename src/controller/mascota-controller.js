@@ -35,7 +35,8 @@ exports.misMascotas = (req, res) =>{
             return res.status(400).send({ 'msg': err });
         }
         return res.status(200).json({
-           mascota
+           mascota,
+           mas: req.user.id
         });   
 }
     )};
