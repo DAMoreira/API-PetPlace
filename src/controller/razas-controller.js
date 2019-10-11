@@ -29,4 +29,6 @@ exports.getAllRazas = (req, res) =>{
            raza
         });   
 }
-    )};
+    ).sort({
+        raza: 1
+    })};
