@@ -24,7 +24,10 @@ routes.post('/registerM',passport.authenticate('jwt', { session: false }), masco
 routes.post('/misMascotas',passport.authenticate('jwt', { session: false }) ,mascotaController.misMascotas);
 routes.post('/modificarMascota', mascotaController.modifyMascota);
 routes.post('/getAllMascotas', mascotaController.getAllMascotas);
+
+//razas
 routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
+routes.get('/getAllRazas', razasController.getAllRazas);
 
 
 //jwt con email 
@@ -32,7 +35,6 @@ routes.get('/special', passport.authenticate('jwt', { session: false }), (req, r
     return res.json({ msg: `Hey ${req.user.email}! I open at the close.` });
 });
 routes.get('/token', passport.authenticate('jwt', { session: false }), userController.obternerTUser);
-
 
 
  
