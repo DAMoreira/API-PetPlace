@@ -1,6 +1,7 @@
 var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var config = require('../config/config');
+var passport	    = require('passport');
  
 // funcion para crear token
 function createToken(user) {
@@ -126,6 +127,13 @@ exports.controlUser = (req, res) => {
         token: validarTk(req.body.token)
           });
 }
+
+
+exports.obternerTUser = (req, res) =>{
+ 
+        return res.json({ msg: `Hey ${req.user.email}! I open at the close.` });
+}
+
     
 
 
