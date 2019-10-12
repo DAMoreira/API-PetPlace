@@ -29,7 +29,7 @@ exports.registerUser = (req, res) => {
         }
  
         if (user) {
-            return res.status(400).json({ 'msg': 'The user already exists', user });
+            return res.status(400).json({ 'msg': ' Ya existe un usuario con este correo electrónico', user });
         }
  
         let newUser = User(req.body);
