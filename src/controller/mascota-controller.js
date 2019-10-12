@@ -30,7 +30,7 @@ exports.registerMascota = (req, res) => {
 };
 //metodo para mostrar las mascotas, recibe un token y devuelve las mascotas que coinciten el amo con el objectId del token (que sería la referencia del objeto usuario)
 exports.misMascotas = (req, res) =>{
-    Mascota.find({ amo: validarTk(req.body.token).id}, (err, mascota)=>{
+    Mascota.find({ amo: req.user.id}, (err, mascota)=>{
         if(err){
             return res.status(400).send({ 'msg': err });
         }
