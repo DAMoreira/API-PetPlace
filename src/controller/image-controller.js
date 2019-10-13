@@ -22,8 +22,8 @@ message: 'file already exist'
 }else {
 var imageDetails = {
 imageName: req.body.imageName,
-cloudImage: "C:/3.png",
-//cloudImage: req.files[0].path,
+cloudImage: req.files[0].path,
+//cloudImage: console.log(req.files[0].path),
 imageId: ''
 }
 // IF ALL THING GO WELL, POST THE IMAGE TO CLOUDINARY
@@ -35,6 +35,7 @@ imageId: result.id
 }
 //THEN CREATE THE FILE IN THE DATABASE
 imageModel.create(imageDetails, (err, created)=> {
+     console.log(req.files[0].path);
 if(err){
 res.json({
 err: err,

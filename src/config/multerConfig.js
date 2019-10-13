@@ -1,4 +1,5 @@
 var multer = require('multer');
+var upload = multer({ dest: './files/images' })
 
 //multer.diskStorage() creates a storage space for storing files. 
 var storage = multer.diskStorage({
