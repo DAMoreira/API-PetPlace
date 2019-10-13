@@ -5,7 +5,8 @@ var mascotaController = require('./controller/mascota-controller');
 var passport	    = require('passport');
 var razasController = require('./controller/razas-controller');
 
-
+var imageController = require('./controller/image-controller.js');
+var upload = require('./config/multerConfig');
  
 routes.get('/', (req, res) => {
     return res.send('Hello, this is the API!');
@@ -28,6 +29,9 @@ routes.get('/getAllMascotas', passport.authenticate('jwt', { session: false }), 
 //razas
 routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
 routes.get('/getAllRazas', razasController.getAllRazas);
+
+
+routes.post('/addImage', upload.any(), imageController.createApp);
 
 
 //jwt con email 
