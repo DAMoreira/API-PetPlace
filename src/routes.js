@@ -30,7 +30,7 @@ routes.get('/getAllMascotas', passport.authenticate('jwt', { session: false }), 
 routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
 routes.get('/getAllRazas', razasController.getAllRazas);
 
-
+//imagenes
 routes.post('/addImage', upload.any(), imageController.createApp);
 routes.get('/getImageByPet', imageController.getImageByPet);
 
