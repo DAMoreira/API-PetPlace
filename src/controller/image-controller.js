@@ -2,6 +2,8 @@
 var imageModel = require('../models/image.model');
 //IMPORT CLOUDINARY CONFIG HERE
 var cloud = require('../config/cloudinaryConfig');
+
+const fs = require('fs');
 exports.createApp = (req, res) => {
 try{
     var imageDetails = {
@@ -35,7 +37,6 @@ imageId: result.id
 }
 //THEN CREATE THE FILE IN THE DATABASE
 imageModel.create(imageDetails, (err, created)=> {
-     console.log(req.files[0].path);
 if(err){
 res.json({
 err: err,
@@ -46,7 +47,14 @@ res.json({
 created: created,
 message: "image uploaded successfully!!"
 })
+try {
+     fs.unlinkSync(".\\".concat(req.files[0].path))
+     //file removed
+   } catch(err) {
+     console.error(err)
+   }
 }
+
 })
 })
 }
