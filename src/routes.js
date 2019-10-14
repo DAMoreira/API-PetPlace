@@ -32,6 +32,7 @@ routes.get('/getAllRazas', razasController.getAllRazas);
 
 
 routes.post('/addImage', upload.any(), imageController.createApp);
+routes.get('/getImageByPet', imageController.getImageByPet);
 
 
 //jwt con email 

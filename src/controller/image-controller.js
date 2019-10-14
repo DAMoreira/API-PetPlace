@@ -63,3 +63,10 @@ try {
 console.log(execptions)
 }
 }
+
+
+exports.getImageByPet = (req, res) => {
+  imageModel.findOne({ imageName: req.body.imageName }).then((result) => {
+      res.status(200).send(result);
+  });
+};
