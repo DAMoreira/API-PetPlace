@@ -17,7 +17,7 @@ exports.registerMascota = (req, res) => {
 //creo la nueva mascota y le asigno el objetId del dueño mediente el token
     let newMascota = Mascota(req.body);
     newMascota.amo = validarTk(req.body.token).id
-    newMascota.foto = Image.createApp(req.body.foto);
+  //  newMascota.foto = Image.createApp(req.body.foto);
     newMascota.save((err, mascota) => {
         if (err) {
             return res.status(400).json({ 'msg': err });
