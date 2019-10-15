@@ -5,7 +5,7 @@ var cloud = require('../config/cloudinaryConfig');
 
 const fs = require('fs');
 exports.createApp = (req, res) => {
-  console.log(req.body.cloudImage);
+  console.log(req.files[0].path);
 try{
     var imageDetails = {
        imageName: req.body.imageName,
@@ -25,7 +25,7 @@ message: 'file already exist'
 }else {
 var imageDetails = {
 imageName: req.body.imageName,
-cloudImage: req.body.cloudImage,
+cloudImage: req.files[0].path,
 //cloudImage: console.log(req.files[0].path),
 imageId: ''
 }
