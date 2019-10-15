@@ -50,7 +50,7 @@ exports.registerMascota = (req, res) => {
 //creo la nueva mascota y le asigno el objetId del dueño mediente el token
     let newMascota = Mascota(req.body);
     newMascota.amo = validarTk(req.body.token).id;
-     fotoPerfil = req.files[0].path;
+     fotoPerfil = req.body.foto;
     
   
    async function modifyfoto(fotoPerfil){
