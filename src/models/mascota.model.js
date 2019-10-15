@@ -26,7 +26,7 @@ var MascotaSchema = new mongoose.Schema({
     },
     foto: {
         type: String,
-        required: false
+        required: true
     },
     ubicacion:
     {
