@@ -1,5 +1,6 @@
 //IMPORT THE MODEL WE CREATED EARLIER
 var imageModel = require('../models/image.model');
+var image = require('../models/images.model')
 //IMPORT CLOUDINARY CONFIG HERE
 var cloud = require('../config/cloudinaryConfig');
 
@@ -69,5 +70,21 @@ console.log(execptions)
 exports.getImageByPet = (req, res) => {
   imageModel.findOne({ imageName: req.body.imageName }).then((result) => {
       res.status(200).send(result);
+  });
+};
+
+
+
+  exports.uploadImage = (req,res, next) =>{ 
+  // Create a new image model and fill the properties
+  let newImage = new image;
+  newImage.filename = req.file.filename;
+  newImage.originalName = req.file.originalname;
+  newImage.desc = req.body.desc
+  newImage.save(err => {
+      if (err) {
+          return res.sendStatus(400);
+      }
+      res.status(201).send({ newImage });
   });
 };

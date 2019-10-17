@@ -33,7 +33,7 @@ routes.get('/getAllRazas', razasController.getAllRazas);
 //imagenes
 routes.post('/addImage', upload.any(), imageController.createApp);
 routes.get('/getImageByPet', imageController.getImageByPet);
-
+routes.post('/images', upload.single('image'), imageController.uploadImage); 
 
 //jwt con email 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
