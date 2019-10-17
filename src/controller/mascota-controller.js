@@ -50,7 +50,7 @@ exports.registerMascota = (req, res) => {
 //creo la nueva mascota y le asigno el objetId del dueño mediente el token
     let newMascota = Mascota(req.body);
     newMascota.amo = validarTk(req.body.token).id;
-     fotoPerfil = req.body.foto
+     fotoPerfil = req.files[0].path;
     
   
    async function modifyfoto(fotoPerfil){
@@ -123,3 +123,17 @@ exports.modifyMascota = (req, res) => {
         }
     );
 }
+exports.borrarMascota = (req, res) =>{
+    Mascota.findByIdAndDelete(req.body._id, (err, mascota) => {
+        if (err) return res.status(500).json({ 'msg': err });  
+       
+        return res.status(200).json( { 
+            msj: "Tu mascota " + mascota.nombre + " ha sido eliminada",
+            id: mascota._id
+      
+        });
+    })
+};
+
+
+    

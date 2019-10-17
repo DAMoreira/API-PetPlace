@@ -21,10 +21,11 @@ routes.post('/control',passport.authenticate('jwt', { session: false }),userCont
 
 //rutas mascota
 //routes.post('/registerM', passport.authenticate('jwt', { session: false }),mascotaController.registerMascota);
-routes.post('/registerM',passport.authenticate('jwt', { session: false }), mascotaController.registerMascota);
+routes.post('/registerM', upload.any() ,passport.authenticate('jwt', { session: false }), mascotaController.registerMascota);
 routes.get('/misMascotas',passport.authenticate('jwt', { session: false }) ,mascotaController.misMascotas);
 routes.post('/modificarMascota',passport.authenticate('jwt', { session: false }), mascotaController.modifyMascota);
 routes.get('/getAllMascotas', passport.authenticate('jwt', { session: false }), mascotaController.getAllMascotas);
+routes.post('/borrarMascota', passport.authenticate('jwt', { session: false }), mascotaController.borrarMascota);
 
 //razas
 routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
