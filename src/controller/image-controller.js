@@ -78,9 +78,9 @@ exports.getImageByPet = (req, res) => {
   exports.uploadImage = (req,res, next) =>{ 
   // Create a new image model and fill the properties
   let newImage = new image;
-  newImage.filename = req.file.filename;
-  newImage.originalName = req.file.originalname;
-  newImage.desc = req.body.desc
+  newImage.filename = "alfo";
+  newImage.originalName = "nombre original";
+  newImage.desc = "una descripcion"
   newImage.save(err => {
       if (err) {
           return res.sendStatus(400);
