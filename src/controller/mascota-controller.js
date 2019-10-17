@@ -50,21 +50,21 @@ exports.registerMascota = (req, res) => {
 //creo la nueva mascota y le asigno el objetId del dueño mediente el token
     let newMascota = Mascota(req.body);
     newMascota.amo = validarTk(req.body.token).id;
-     fotoPerfil = req.files[0].path;
+  //   fotoPerfil = req.files[0].path;
     
   
-   async function modifyfoto(fotoPerfil){
+ /*  async function modifyfoto(fotoPerfil){
     
      await imageUrl(fotoPerfil);
      newMascota.foto= this.x;
   
    
      }
-     modifyfoto(fotoPerfil);
+     modifyfoto(fotoPerfil);*/
 
      
-  async function guardar(){
-  await modifyfoto(fotoPerfil);
+ /* async function guardar(){
+  await modifyfoto(fotoPerfil);*/
     newMascota.save((err, mascota) => {
         if (err) {
             return res.status(400).json({ 'msg': err });
@@ -77,9 +77,9 @@ exports.registerMascota = (req, res) => {
         });
     });
      }
-guardar();
+//guardar();
 
-};
+    //};
 //metodo para mostrar las mascotas, recibe un token y devuelve las mascotas que coinciten el amo con el objectId del token (que sería la referencia del objeto usuario)
 exports.misMascotas = (req, res) =>{
     Mascota.find({ amo: req.user.id}, (err, mascota)=>{
