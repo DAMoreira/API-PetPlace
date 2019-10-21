@@ -66,7 +66,7 @@ return created.cloudImage;
 }catch(execptions){
 console.log(execptions)
 }
-return res.json("Aca esta el url: "+cloudImage);
+//return res.json("Aca esta el url: "+cloudImage);
 }
 
 
