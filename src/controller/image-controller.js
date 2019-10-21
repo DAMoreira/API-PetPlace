@@ -45,7 +45,7 @@ err: err,
 message: 'could not upload image, try again'
 })
 }else {
-res.json({cloudImage
+res.json({created
 })
 
 /*try {
