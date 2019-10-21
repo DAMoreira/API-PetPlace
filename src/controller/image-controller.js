@@ -47,9 +47,10 @@ message: 'could not upload image, try again'
 }else {
 res.json({
 created: created,
-//ok:true,
-//message: "image uploaded successfully!!"
+ok:true,
+message: "image uploaded successfully!!"
 })
+return created.cloudImage;
 /*try {
      fs.unlinkSync(".\\".concat(req.body.cloudImage))
      //file removed
