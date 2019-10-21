@@ -9,7 +9,7 @@ exports.createApp = (req, res) => {
   console.log(req.files[0].path);
 try{
     var imageDetails = {
-       imageName: "asdasd.jpg",
+       imageName: "asdas.jpg",
      }
 //USING MONGO METHOD TO FINE IF IMAGE-NAME EXIST IN THE DB
      imageModel.find({imageName: imageDetails.imageName}, (err,          callback) => {
@@ -25,7 +25,7 @@ message: 'file already exist'
 })
 }else {
 var imageDetails = {
-imageName: "asdasd.jpg",
+imageName: "asdas.jpg",
 cloudImage: req.files[0].path,
 //cloudImage: console.log(req.files[0].path),
 imageId: ''
@@ -33,7 +33,7 @@ imageId: ''
 // IF ALL THING GO WELL, POST THE IMAGE TO CLOUDINARY
 cloud.uploads(imageDetails.cloudImage).then((result) => {
 var imageDetails = {
-imageName:"asdasd.jpg",
+imageName:"asdas.jpg",
 cloudImage: result.url,
 imageId: result.id
 }
@@ -47,6 +47,7 @@ message: 'could not upload image, try again'
 }else {
 res.json({
 created: created,
+ok:true,
 message: "image uploaded successfully!!"
 })
 /*try {
