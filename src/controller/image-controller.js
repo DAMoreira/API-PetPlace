@@ -46,7 +46,7 @@ message: 'could not upload image, try again'
 })
 }else {
 res.json({
-created: created,
+created: created.cloudImage,
 ok:true,
 message: "image uploaded successfully!!"
 })
