@@ -45,7 +45,7 @@ err: err,
 message: 'could not upload image, try again'
 })
 }else {
-  return res.json(created.cloudImage.value);
+  return res.json(result.body.url);
 /*res.json({
 created: created,
 ok:true,
