@@ -45,7 +45,7 @@ err: err,
 message: 'could not upload image, try again'
 })
 }else {
-  return res.body.created;
+  return res.json(body.created);
 /*res.json({
 created: created,
 ok:true,
