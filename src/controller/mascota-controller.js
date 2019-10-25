@@ -135,5 +135,19 @@ exports.borrarMascota = (req, res) =>{
     })
 };
 
+exports.getMascotaByID = (req, res) =>{
+    Mascota.findById(req.body._id, (err, mascota)=>{
+        if (err){
+            return res.status(500).json({'msg':err});
+        }
+        if (mascota==null){
+            return res.status(200).json({msj:'el ID de mascota no existe'}) 
+        }
+        else{
+            return res.status(200).json({mascota});
+        }
+    })
+}
+
 
     

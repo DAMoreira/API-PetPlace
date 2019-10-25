@@ -26,6 +26,7 @@ routes.get('/misMascotas',passport.authenticate('jwt', { session: false }) ,masc
 routes.post('/modificarMascota',passport.authenticate('jwt', { session: false }), mascotaController.modifyMascota);
 routes.get('/getAllMascotas', passport.authenticate('jwt', { session: false }), mascotaController.getAllMascotas);
 routes.post('/borrarMascota', passport.authenticate('jwt', { session: false }), mascotaController.borrarMascota);
+routes.post('/getMascotaByID', passport.authenticate('jwt', { session: false }),mascotaController.getMascotaByID);
 
 //razas
 routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
