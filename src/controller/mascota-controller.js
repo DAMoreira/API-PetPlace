@@ -136,7 +136,7 @@ exports.borrarMascota = (req, res) =>{
 };
 
 exports.getMascotaByID = (req, res) =>{
-    Mascota.findById(req.body._id, (err, mascota)=>{
+    Mascota.findById(req, (err, mascota)=>{
         if (err){
             return res.status(500).json({'msg':err});
         }
