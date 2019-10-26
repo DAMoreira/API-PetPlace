@@ -136,7 +136,8 @@ exports.borrarMascota = (req, res) =>{
 };
 
 exports.getMascotaByID = (req, res) =>{
-    Mascota.findById(req, (err, mascota)=>{
+    Mascota.findById(req.body._id, (err, mascota)=>{
+        console.log(req.body._id)
         if (err){
             return res.status(500).json({'msg':err});
         }
@@ -144,7 +145,9 @@ exports.getMascotaByID = (req, res) =>{
             return res.status(200).json({msj:'el ID de mascota no existe'}) 
         }
         else{
+            console.log(mascota)
             return res.status(200).json({mascota});
+            
         }
     })
 }
