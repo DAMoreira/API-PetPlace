@@ -12,7 +12,7 @@ try{
        imageName: "asdssssad.jpg",
      }
 //USING MONGO METHOD TO FINE IF IMAGE-NAME EXIST IN THE DB
-     imageModel.find({imageName: imageDetails.imageName}, (err,          callback) => {
+     imageModel.find({imageName: "imageDetails.imageName"}, (err,          callback) => {
 //CHECKING IF ERROR OCCURRED      
  if (err) {
            res.json({
