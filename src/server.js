@@ -6,8 +6,8 @@ var config      = require('./config/config');
 var port        = process.env.PORT || 5000; 
 var cors        = require('cors');
 
-var socketIO = require('socket.io');
-const socket = socketIO(app);
+var socket = require('socket.io')(app);
+//const socket = socketIO(app);
 
 var app = express();
 app.use(cors());
