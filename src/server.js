@@ -6,25 +6,22 @@ var config      = require('./config/config');
 var port        = process.env.PORT || 5000; 
 var cors        = require('cors');
 
-var socket = require('socket.io')(app);
-//const socket = socketIO(app);
-const io = require('socket.io')();
-// or
-const Server = require('socket.io');
-const io = new Server();
-
+var socket = require('socket.io'), http = require('http'),
+server = http.createServer(), socket = socket.listen(server);
 
 var app = express();
 app.use(cors());
 
-io.on('connection', function(connection) {
+socket.on('connection', function(connection) {
   console.log('User Connected');
   
   connection.on('message', function(msg){
-    io.emit('message', msg);
+    socket.emit('message', msg);
   });
 });
-
+server.listen(port, function(){
+console.log('Server started');
+});
 
  
 // get our request parameters
