@@ -8,15 +8,20 @@ var cors        = require('cors');
 
 var socket = require('socket.io')(app);
 //const socket = socketIO(app);
+const io = require('socket.io')();
+// or
+const Server = require('socket.io');
+const io = new Server();
+
 
 var app = express();
 app.use(cors());
 
-socket.on('connection', function(connection) {
+io.on('connection', function(connection) {
   console.log('User Connected');
   
   connection.on('message', function(msg){
-    socket.emit('message', msg);
+    io.emit('message', msg);
   });
 });
 
