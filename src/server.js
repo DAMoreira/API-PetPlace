@@ -6,13 +6,13 @@ var config      = require('./config/config');
 var port        = process.env.PORT || 5000; 
 var cors        = require('cors');
 
-var socket = require('socket.io'), http = require('http'),
-server = http.createServer(), socket = socket.listen(server);
+//var socket = require('socket.io'), http = require('http'),
+//server = http.createServer(), socket = socket.listen(server);
 
 var app = express();
 app.use(cors());
 
-socket.on('connection', function(connection) {
+/*socket.on('connection', function(connection) {
   console.log('User Connected');
   
   connection.on('message', function(msg){
@@ -21,7 +21,7 @@ socket.on('connection', function(connection) {
 });
 server.listen(port, function(){
 console.log('Server started');
-});
+});*/
 
  
 // get our request parameters
