@@ -6,8 +6,8 @@ var config      = require('./config/config');
 var port        = process.env.PORT || 5000; 
 var cors        = require('cors');
 
-var socket = require('socket.io'), http = require('http'),
-server = http.createServer(), socket = socket.listen(server);
+var socketIO = require('socket.io');
+const socket = socketIO(app);
 
 var app = express();
 app.use(cors());
@@ -19,9 +19,7 @@ socket.on('connection', function(connection) {
     socket.emit('message', msg);
   });
 });
-server.listen(3000, function(){
-console.log('Server started');
-});
+
 
  
 // get our request parameters
