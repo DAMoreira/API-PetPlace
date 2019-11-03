@@ -5,20 +5,21 @@ var mongoose    = require('mongoose');
 var config      = require('./config/config');
 var port        = process.env.PORT || 5000; 
 var cors        = require('cors');
-var controller = require('./controller/chat-controller');
 
-var io = require('socket.io'), http = require('http'),
-server = http.createServer(), io = io.listen(server);
+var socket = require('socket.io'), http = require('http'),
+server = http.createServer(), socket = socket.listen(server);
 
 var app = express();
 app.use(cors());
 
-var chat = io
-  .of('/chat-controller')
-  .on('connection', function (socket) {
-      controller.respond(chat,socket);
+socket.on('connection', function(connection) {
+  console.log('User Connected');
+  
+  connection.on('message', function(msg){
+    socket.emit('message', msg);
   });
-server.listen(port, function(){
+});
+server.listen(3000, function(){
   console.log('Server started');
 });
  
@@ -53,5 +54,5 @@ connection.on('error', (err) => {
 });
  
 // Start the server
-//app.listen(port);
+app.listen(port);
 console.log('There will be dragons: http://localhost:' + port);
