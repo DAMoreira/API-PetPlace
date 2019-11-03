@@ -10,16 +10,13 @@ var controller = require('./controller/chat-controller');
 var socket = require('socket.io'), http = require('http'),
 server = http.createServer(), socket = socket.listen(server);
 
-socket.on('connection', controller.respond );
-
 var app = express();
 app.use(cors());
-
 
 server.listen(port, function(){
   console.log('Server started');
 });
- 
+socket.on('connection', controller.respond ); 
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
