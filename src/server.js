@@ -7,16 +7,21 @@ var port        = process.env.PORT || 5000;
 var cors        = require('cors');
 var controller = require('./controller/chat-controller');
 
-var socket = require('socket.io'), http = require('http'),
-server = http.createServer(), socket = socket.listen(server);
+var io = require('socket.io'), http = require('http'),
+server = http.createServer(), io = io.listen(server);
 
 var app = express();
 app.use(cors());
 
+var chat = io
+  .of('/chat-controller')
+  .on('connection', function (socket) {
+      controller.respond(chat,socket);
+  });
 server.listen(port, function(){
   console.log('Server started');
 });
-socket.on('connection', controller.respond ); 
+ 
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
