@@ -19,7 +19,7 @@ socket.on('connection', function(connection) {
     socket.emit('message', msg);
   });
 });
-server.listen(3000, function(){
+server.listen(port, function(){
   console.log('Server started');
 });
  
@@ -54,5 +54,5 @@ connection.on('error', (err) => {
 });
  
 // Start the server
-app.listen(port);
+//app.listen(port);
 console.log('There will be dragons: http://localhost:' + port);
