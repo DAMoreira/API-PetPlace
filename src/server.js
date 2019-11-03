@@ -10,7 +10,7 @@ var controller = require('./controller/chat-controller');
 var socket = require('socket.io'), http = require('http'),
 server = http.createServer(), socket = socket.listen(server);
 
-io.sockets.on('connection', controller.respond );
+socket.on('connection', controller.respond );
 
 var app = express();
 app.use(cors());
