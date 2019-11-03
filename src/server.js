@@ -19,7 +19,7 @@ socket.on('connection', function(connection) {
     socket.emit('message', msg);
   });
 });
-server.listen(3000, function(){
+server.listen(port, function(){
   console.log('Server started');
 });
  
