@@ -5,20 +5,17 @@ var mongoose    = require('mongoose');
 var config      = require('./config/config');
 var port        = process.env.PORT || 5000; 
 var cors        = require('cors');
+var controller = require('./controller/chat-controller');
 
 var socket = require('socket.io'), http = require('http'),
 server = http.createServer(), socket = socket.listen(server);
 
+io.sockets.on('connection', controller.respond );
+
 var app = express();
 app.use(cors());
 
-socket.on('connection', function(connection) {
-  console.log('User Connected');
-  
-  connection.on('message', function(msg){
-    socket.emit('message', msg);
-  });
-});
+
 server.listen(port, function(){
   console.log('Server started');
 });
