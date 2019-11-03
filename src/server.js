@@ -19,9 +19,9 @@ socket.on('connection', function(connection) {
     socket.emit('message', msg);
   });
 });
-server.listen(4000);
-server.use(cors());
-
+server.listen(3000, function(){
+  console.log('Server started');
+});
  
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
