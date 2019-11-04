@@ -4,6 +4,7 @@ var userController  = require('./controller/user-controller');
 var mascotaController = require('./controller/mascota-controller');
 var passport	    = require('passport');
 var razasController = require('./controller/razas-controller');
+var matchController = require('./controller/match-controller')
 
 var imageController = require('./controller/image-controller.js');
 var upload = require('./config/multerConfig');
@@ -27,6 +28,12 @@ routes.post('/modificarMascota',passport.authenticate('jwt', { session: false })
 routes.get('/getAllMascotas', passport.authenticate('jwt', { session: false }), mascotaController.getAllMascotas);
 routes.post('/borrarMascota', passport.authenticate('jwt', { session: false }), mascotaController.borrarMascota);
 routes.post('/getMascotaByID', passport.authenticate('jwt', { session: false }),mascotaController.getMascotaByID);
+
+//Match
+routes.post('/crearMatch',passport.authenticate('jwt', {session: false}), matchController.crearMatch);
+routes.post('/aceptarMatch',passport.authenticate('jwt', {session: false}), matchController.aceptarMatch);
+routes.post('/recahzarMatch',passport.authenticate('jwt', {session: false}), matchController.rechazarMatch);
+routes.get('/misMatch',passport.authenticate('jwt', {session: false}), matchController.getMatchs);
 
 //razas
 routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
