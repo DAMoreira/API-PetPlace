@@ -44,7 +44,7 @@ exports.rechazarMatch = (req, res) =>{ //recibe el id del match
     );
 }
 
-exports.getMatchs = (req, res)=>{
+exports.getMatches = (req, res)=>{
 
    Match.find({ emisor: req.user.id, estado:'aceptado'}, (err, match)=>{
         if(err){
@@ -57,5 +57,19 @@ exports.getMatchs = (req, res)=>{
      
     })
 };
+
+exports.solicitudes = (req, res)=>{
+
+    Match.find({ receptor: req.user.id, estado:'pendiente'}, (err, match)=>{
+         if(err){
+             return res.status(400).send({ 'msg': err });
+         }
+     
+         return res.status(200).json({
+             match
+         });   
+      
+     })
+ };
 
 

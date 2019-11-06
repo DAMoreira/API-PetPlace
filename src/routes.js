@@ -32,8 +32,9 @@ routes.post('/getMascotaByID', passport.authenticate('jwt', { session: false }),
 //Match
 routes.post('/crearMatch',passport.authenticate('jwt', {session: false}), matchController.crearMatch);
 routes.post('/aceptarMatch',passport.authenticate('jwt', {session: false}), matchController.aceptarMatch);
-routes.post('/recahzarMatch',passport.authenticate('jwt', {session: false}), matchController.rechazarMatch);
-routes.get('/misMatch',passport.authenticate('jwt', {session: false}), matchController.getMatchs);
+routes.post('/rechazarMatch',passport.authenticate('jwt', {session: false}), matchController.rechazarMatch);
+routes.get('/misMatch',passport.authenticate('jwt', {session: false}), matchController.getMatches);
+routes.get('/solicitudes',passport.authenticate('jwt', {session: false}), matchController.solicitudes);
 
 //razas
 routes.post('/registerRaza', razasController.registerRaza); // Cargar las razas en la BD
