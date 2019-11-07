@@ -13,7 +13,15 @@ var MatchSchema = new mongoose.Schema({
     emisor:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    mascotaEmi:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Mascota"
+    },
+    mascotaRece:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Mascota"
+    },
 });
 
 
