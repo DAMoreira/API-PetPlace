@@ -1,9 +1,11 @@
 var Mascota = require('../models/mascota.model');
+var Match = require('../models/match.model');
+var MatchController = require('../controller/match-controller');
 var config = require('../config/config');
 var Image = require('../controller/image-controller');
 var jwt = require('jsonwebtoken');
 var cloud = require('../config/cloudinaryConfig');
-const x = String;
+var ObjectId = require('mongodb').ObjectID;
 
 
 //funcion para valdiar token, si esta activo devulve el emial y id del objeto usuario, sino error.
@@ -102,6 +104,34 @@ exports.getAllMascotas = (req, res) =>{
         });   
 }
     )};
+
+exports.getAllMascotasCustom = (req, res) =>{
+    console.log(req.user.id);
+  
+    Mascota.aggregate([
+    
+        {$lookup:{
+            from: "matches",
+            localField: "_id",
+            foreignField:"mascotaRece",
+            as:"machInfo"
+        }},
+        { $unwind: {path: "$machInfo", preserveNullAndEmptyArrays: true }},
+        {$match: {$or: [  {"machInfo.emisor":  ObjectId(req.user.id)}, { "machInfo":null } ] } }
+       
+    
+    ]).exec((err, result)=>{
+        if (err) {
+            console.log("error" ,err)
+        }
+        if (result) {
+          
+            return  res.status(200).json({
+                result
+             });   
+        }
+  });
+};
 
 exports.modifyMascota = (req, res) => {
         //if para controlar los datos ingresados, cuando pongo la fecha no me lo toma por eso lo saque :B 

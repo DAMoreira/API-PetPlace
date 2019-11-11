@@ -28,6 +28,7 @@ routes.post('/modificarMascota',passport.authenticate('jwt', { session: false })
 routes.get('/getAllMascotas', passport.authenticate('jwt', { session: false }), mascotaController.getAllMascotas);
 routes.post('/borrarMascota', passport.authenticate('jwt', { session: false }), mascotaController.borrarMascota);
 routes.post('/getMascotaByID', passport.authenticate('jwt', { session: false }),mascotaController.getMascotaByID);
+routes.get('/custom',passport.authenticate('jwt', { session: false }) ,mascotaController.getAllMascotasCustom);
 
 //Match
 routes.post('/crearMatch',passport.authenticate('jwt', {session: false}), matchController.crearMatch);
