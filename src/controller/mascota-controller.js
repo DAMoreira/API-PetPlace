@@ -120,6 +120,7 @@ exports.getAllMascotasCustom = (req, res) =>{
         {$match: {$or: [  {"matchInfo.emisor":  ObjectId(req.user.id)}, { "matchInfo":null } ] } },
         {$group: {
             _id: "$_id",
+            nombre:"$nombre",
             matchInfo: {$addToSet: {"estado":"null"}}
             }
         }
