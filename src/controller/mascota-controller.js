@@ -117,13 +117,12 @@ exports.getAllMascotasCustom = (req, res) =>{
             as:"matchInfo"
         }},
         { $unwind: {path: "$matchInfo", preserveNullAndEmptyArrays: true }},
-        {$match: {$or: [  {"matchInfo.emisor":  ObjectId(req.user.id)}, { "matchInfo":null } ] } },
-        {$group: {
+        {$match: {"matchInfo.emisor":  ObjectId(req.user.id)} }
+        /*{$group: {
             _id: "$_id",
-            nombre:"$nombre",
             matchInfo: {$addToSet: {"estado":"null"}}
             }
-        }
+        }*/
        
     
     ]).exec((err, result)=>{
