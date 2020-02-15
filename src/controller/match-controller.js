@@ -46,7 +46,7 @@ exports.rechazarMatch = (req, res) =>{ //recibe el id del match
 
 exports.getMatches = (req, res)=>{
 
-   Match.find({ emisor: req.user.id, estado:'aceptado'}).populate("mascotaEmi").exec( (err, match)=>{
+   Match.find({ emisor: req.user.id, estado:'aceptado'}).populate("mascotaEmi").exec( (err, match)=>{ //agregar el receptor
         if(err){
             return res.status(400).send({ 'msg': err });
         }
