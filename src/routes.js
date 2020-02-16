@@ -35,6 +35,7 @@ routes.post('/crearMatch',passport.authenticate('jwt', {session: false}), matchC
 routes.post('/aceptarMatch',passport.authenticate('jwt', {session: false}), matchController.aceptarMatch);
 routes.post('/rechazarMatch',passport.authenticate('jwt', {session: false}), matchController.rechazarMatch);
 routes.get('/misMatch',passport.authenticate('jwt', {session: false}), matchController.getMatches);
+routes.get('/todosMisMatch',passport.authenticate('jwt', {session: false}), matchController.getAllMatches);
 routes.get('/solicitudes',passport.authenticate('jwt', {session: false}), matchController.solicitudes);
 
 //razas
