@@ -74,7 +74,7 @@ exports.getMatches = (req, res)=>{
 
 
     exports.getAllMatches = (req, res) =>{
-        Match.find({}, (err, match)=>{
+        Match.find({ $or: [ { emisor: req.user.id}, { receptor: req.user.id } ] }, (err, match)=>{
             if(err){
                 return res.status(400).send({ 'msg': err });
             }
