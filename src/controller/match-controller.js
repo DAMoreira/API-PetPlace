@@ -60,7 +60,7 @@ exports.getMatches = (req, res)=>{
 
    exports.getAllMatches = (req, res)=>{
 
-    Match.find({ emisor: req.user.id, receptor: req.user.id}).populate("mascotaEmi").exec( (err, match)=>{ //agregar el receptor
+    Match.find({ emisor: req.user.id, receptor: req.user.id}).exec( (err, match)=>{ //agregar el receptor
          if(err){
              return res.status(400).send({ 'msg': err });
          }
