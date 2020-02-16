@@ -58,7 +58,7 @@ exports.getMatches = (req, res)=>{
     })
    };
 
-   exports.getAllMatches = (req, res)=>{
+  /* exports.getAllMatches = (req, res)=>{
 
     Match.find({ emisor: req.user.id, receptor: req.user.id}), (err, match)=>{ //agregar el receptor
          if(err){
@@ -70,7 +70,19 @@ exports.getMatches = (req, res)=>{
          });   
       
      }
-    };
+   };*/
+
+
+    exports.getAllMatches = (req, res) =>{
+        Mascota.find({}, (err, match)=>{
+            if(err){
+                return res.status(400).send({ 'msg': err });
+            }
+            return res.status(200).json({
+               match
+            });   
+    }
+        )};
 
 
 exports.solicitudes = (req, res)=>{
