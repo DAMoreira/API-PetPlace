@@ -187,5 +187,20 @@ exports.getMascotaByID = (req, res) =>{
     })
 }
 
-
+exports.getMascotaByIDAux = (req, res) =>{
+    Mascota.findById(req, (err, mascota)=>{
+        console.log(req)
+        if (err){
+            return res.status(500).json({'msg':err});
+        }
+        if (mascota==null){
+            return res.status(200).json({msj:'el ID de mascota no existe'}) 
+        }
+        else{
+            console.log(mascota)
+            return res.status(200).json({mascota});
+            
+        }
+    })
+}
     
