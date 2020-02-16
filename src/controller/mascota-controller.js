@@ -116,8 +116,8 @@ exports.getAllMascotasCustom = (req, res) =>{
             foreignField:"mascotaRece",
             as:"matchInfo"
         }},
-        //{ $unwind: {path: "$matchInfo", preserveNullAndEmptyArrays: true }},
-       // {$match: {$or: [  {"matchInfo.emisor":  ObjectId(req.user.id)}, { "matchInfo":null} ] } },
+        { $unwind: {path: "$matchInfo", preserveNullAndEmptyArrays: true }},
+        {$match: {$or: [  {"matchInfo.emisor":  ObjectId(req.user.id)}, { "matchInfo":null} ] } },
         /*{$group: {
             _id: "$_id",
             matchInfo: {$addToSet: {"estado":"null"}}
