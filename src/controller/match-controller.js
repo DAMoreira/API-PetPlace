@@ -74,7 +74,7 @@ exports.getMatches = (req, res)=>{
 
 
     exports.getAllMatches = (req, res) =>{
-        Mascota.find({}, (err, match)=>{
+        Match.find({}, (err, match)=>{
             if(err){
                 return res.status(400).send({ 'msg': err });
             }
