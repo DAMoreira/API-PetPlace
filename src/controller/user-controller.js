@@ -20,7 +20,7 @@ function validarTk(token){
  
 exports.registerUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
-        return res.status(400).json({ 'msg': 'Es necesario un mail y una contraseña' });
+        return res.status(400).json({ 'msg': 'Debe completar todos los campos' });
     }
  
     User.findOne({ email: req.body.email }, (err, user) => {
@@ -86,7 +86,7 @@ exports.loginGUser = (req, res) => {
        
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
-        return res.status(400).send({ 'msg': 'Es necesario un mail y una contraseña' });
+        return res.status(400).send({ 'msg': 'Debe completar todos los campos' });
     }
  
     User.findOne({ email: req.body.email }, (err, user) => {
@@ -105,7 +105,7 @@ exports.loginUser = (req, res) => {
                     usuario: (user),
                 });
             } else {
-                return res.status(400).json({ msg: 'La contraseña no es correcta' });
+                return res.status(400).json({ msg: 'Los datos son incorrectos, por favor verifique' });
             }
         });
         
