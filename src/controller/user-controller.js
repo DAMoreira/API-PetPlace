@@ -20,7 +20,7 @@ function validarTk(token){
  
 exports.registerUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
-        return res.status(400).json({ 'msg': 'You need to send email and password' });
+        return res.status(400).json({ 'msg': 'Es necesario un mail y una contraseña' });
     }
  
     User.findOne({ email: req.body.email }, (err, user) => {
@@ -86,7 +86,7 @@ exports.loginGUser = (req, res) => {
        
 exports.loginUser = (req, res) => {
     if (!req.body.email || !req.body.password) {
-        return res.status(400).send({ 'msg': 'You need to send email and password' });
+        return res.status(400).send({ 'msg': 'Es necesario un mail y una contraseña' });
     }
  
     User.findOne({ email: req.body.email }, (err, user) => {
@@ -95,7 +95,7 @@ exports.loginUser = (req, res) => {
         }
  
         if (!user) {
-            return res.status(400).json({ 'msg': 'The user does not exist' });
+            return res.status(400).json({ 'msg': 'El usuario no existe' });
         }
  
         user.comparePassword(req.body.password, (err, isMatch) => {
@@ -105,7 +105,7 @@ exports.loginUser = (req, res) => {
                     usuario: (user),
                 });
             } else {
-                return res.status(400).json({ msg: 'The email and password don\'t match.' });
+                return res.status(400).json({ msg: 'La contraseña no es correcta' });
             }
         });
         
