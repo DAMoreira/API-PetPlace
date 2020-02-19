@@ -41,7 +41,7 @@
         },
         {
           "key": "Authorization",
-          "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWQ5ZDk0ZjIyMDFlMDAxNzcwNTIzNCIsImVtYWlsIjoianVsaWFuQHBldHBsYWNlLmNvbSIsImlhdCI6MTU4MTk4MDE4NCwiZXhwIjoxNTgyMDY2NTg0fQ.2DcisrDw6CIS3eUuDHi4jiA0UalDmU91PxCNsvSpqW0",
+          "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWQ5ZDk0ZjIyMDFlMDAxNzcwNTIzNCIsImVtYWlsIjoianVsaWFuQHBldHBsYWNlLmNvbSIsImlhdCI6MTU4MjA3MDYyMywiZXhwIjoxNTgyMTU3MDIzfQ._luGpnTCvQlpXGTV2cy5SdLGME2BqDaYn1Lqno-QTHs",
           "description": "",
           "type": "text",
           "enabled": true
@@ -58,7 +58,7 @@
             "id": "67c9a104-23a1-4d7b-9989-12ea5f420e6b",
             "exec": [
               "const respuesta = {",
-              "    \"estado\": \"aceptado\"",
+              "    \"estado\": \"pendiente\"",
               "}",
               "var resp = pm.response.json();",
               "pm.test('Verifico que creo el match', function() {",
@@ -71,12 +71,12 @@
       ],
       "folder": null,
       "preRequestScript": null,
-      "tests": "const respuesta = {\n    \"estado\": \"aceptado\"\n}\nvar resp = pm.response.json();\npm.test('Verifico que creo el match', function() {\n    pm.expect(resp.match.estado).to.be.eql(respuesta.estado)\n})",
+      "tests": "const respuesta = {\n    \"estado\": \"pendiente\"\n}\nvar resp = pm.response.json();\npm.test('Verifico que creo el match', function() {\n    pm.expect(resp.match.estado).to.be.eql(respuesta.estado)\n})",
       "currentHelper": null,
       "helperAttributes": null,
       "collectionId": "5261c868-3429-40bd-b75f-885e785b58f2",
       "rawModeData": "{\"receptor\": \"5dc99dee89608d0004dda1c2\",\r\n \"emisor\": \"5d5d9d94f2201e0017705234\",\r\n  \"mascotaEmi\": \"5df15ca6319e35000491c858\",\r\n    \"mascotaRece\":\"5df15d92319e35000491c85a\"}",
-      "headers": "Content-Type: application\/json\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWQ5ZDk0ZjIyMDFlMDAxNzcwNTIzNCIsImVtYWlsIjoianVsaWFuQHBldHBsYWNlLmNvbSIsImlhdCI6MTU4MTk4MDE4NCwiZXhwIjoxNTgyMDY2NTg0fQ.2DcisrDw6CIS3eUuDHi4jiA0UalDmU91PxCNsvSpqW0\n",
+      "headers": "Content-Type: application\/json\nAuthorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWQ5ZDk0ZjIyMDFlMDAxNzcwNTIzNCIsImVtYWlsIjoianVsaWFuQHBldHBsYWNlLmNvbSIsImlhdCI6MTU4MjA3MDYyMywiZXhwIjoxNTgyMTU3MDIzfQ._luGpnTCvQlpXGTV2cy5SdLGME2BqDaYn1Lqno-QTHs\n",
       "pathVariables": []
     },
     {
@@ -1376,4 +1376,4 @@
       "pathVariables": []
     }
   ]
-}}
+}
